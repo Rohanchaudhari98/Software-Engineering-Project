@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="import" href="footer.html">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/formstyle.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BA - Sign Up</title>
+    <link rel="icon" href="static/images/icon.png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="formstyle.css" rel="stylesheet">
+
+</head>
+<body style="background-color: lightblue;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/login">
+        <img src="/static/images/logo.png" width="40" height="30" class="d-inline-block align-top" alt="logo">
+        Bangalore Administrator</a>
+<img style="position:relative;left:1260px;" src="static/images/india.png" width="30" height="20">
+</nav>
+
+
+<div class="wrapper">
+    <form class="form-signin" method="post" action="/signup">
+        <h2 class="form-signin-heading">Sign Up</h2>
+        <marquee width="100%" direction="right" height="50px">
+                Sign up to make complaints and requests
+                </marquee>
+       
+        <div class="input-group mb-3">
+
+            <div class="input-group-prepend">
+                
+                <label class="input-group-text" for="inputGroupSelect01">Account Type</label>
+            </div>
+            <select class="custom-select" name="accounttype" onchange="show(this.value)">
+                <option value="Citizen" selected>Citizen</option>
+                <option value="Administrator">Administrator</option>
+            </select>
+        </div>
+        <!-- <center><div style="color:red;">{{error}}</div></center> -->
+        <center><div style="color:red;">{{error}}</div></center>
+        <br>
+        Name:
+        <input type="text" class="form-control" name="name" placeholder="Name" autofocus="" required />
+        
+
+        Surname:
+        <input type="text" class="form-control" name="surname" placeholder="Surname"  required />
+        
+        <div id="fam">
+            Number of Members:
+            <input type="number" class="form-control" name="members" id="mem" placeholder="Number of Family Members" />
+            
+        </div>
+        Email:
+        <input type="email" class="form-control" name="email" placeholder="Email" required />
+        
+
+        Password:
+        <input type="password" class="form-control" name="password" placeholder="Password"  required/>
+       
+        Address:
+        <input type="text" class="form-control" name="address" placeholder="Address" required />
+
+        Pincode:
+        <input type="text" class="form-control" name="pincode" placeholder="Pincode"required/>
+
+        Phone:
+        <input type="text" class="form-control" name="phone" placeholder="Phone number +91 format"required/>
+
+       
+        <br>
+
+        <button class="btn btn-lg btn-dark btn-block" type="submit" name="submit">Sign up</button>
+    </form>
+
+
+    <script>
+        function show(val) {
+            if(val==1)
+            {
+                document.getElementById('fam').style.display='inline';
+                document.getElementById('mem').setAttribute("required","");
+            }
+            if(val==2)
+            {
+                document.getElementById('fam').style.display='none';
+                document.getElementById('mem').removeAttribute("required");
+            }
+        }
+    </script>
+</div>
+
+</body>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/formstyle.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/formstyle.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="static/images/icon.png">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/formstyle.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BA - Administrator</title>
+
+    <style>.footer {
+        position: fixed;
+        margin-top: 10px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 10px;
+        color: white;
+        text-align: center;
+    }
+    </style>
+    <style>
+    @media screen and (min-width : 0px) and (max-width :759px)
+    {
+        #content{
+            width: 100%; min-height: 95vh; margin: auto; background-color: white; padding: 20px;
+        }
+    }
+
+    @media screen and (min-width: 760px){
+        #content{
+            width: 750px; min-height: 95vh; margin: auto; background-color: white; padding: 20px;
+        }
+    }
+
+    #payments {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        width: 100%;
+        margin: auto;
+    }
+
+    #payments td {
+        border: 2px solid white;
+        padding: 8px;
+        text-align: center;
+    }
+
+    #payments tr:nth-child(even){background-color: #f2f2f2;}
+
+    #payments tr:hover {background-color: #ddd;}
+
+    #payments th {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        text-align: center;
+        background-color: #4c6791;
+        color: white;
+        border: 2px solid white;
+    }
+</style>
+
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+</style>
+
+</head>
+<body style="background-color:#eee">
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <span class="navbar-brand">
+            <a href="/login" color="white">
+                <img src="/static/images/logo.png" width="40" height="30" class="d-inline-block align-top" alt="logo">
+            <font color="white">Bangalore Administrator</font></span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">Profile </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/createrequestbutton">Create Request </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/showrequests">Show Requests </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/createcomplaintbutton">Create Complaint </a>
+            </li>
+           
+            <li class="nav-item">
+                <a class="nav-link" href="/showcomplaint">Show Complaints</a>
+            </li>
+        
+            <li class="nav-item ">
+                <a class="nav-link" href="/paymentsbutton">Payments </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/adminprofile">Administrator </a>
+            </li>
+            
+             <li class="nav-item ">
+                <a class="nav-link" target="_blank" style="color: #ffffff !important;" href="/faq">FAQ </a>
+            </li>
+             <li class="nav-item ">
+                <a class="nav-link" href="/user">View Citizens</a>
+            </li>
+            
+            
+        </ul>
+
+
+
+        <div class="btn-group">
+            {% for item in surname %}
+            <button type="button" class="btn btn-light">{{item[0]}} {{item[1]}}
+               </button> {% endfor %}
+            <button type="button" class="btn  btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only"> Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu  dropdown-menu-right">
+                <a class="dropdown-item" href="/editprofilebutton">Edit Profile</a>
+                <a class="dropdown-item" href="/logout">Log Out</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+ <div id="content">
+        <center><h3>Frequently Asked Questions (FAQ)</h3></center>
+        <br>
+        
+        <button class="accordion">If any citizen has a complaint, how can the complaint be lodged?</button>
+<div class="panel"><br>
+  <p>Regarding any complaint, citizens have various modes communication to lodge a complaint. Citizen can approach any nearest ward/ zone office/ City Civic Centre personally OR through our BMC Helpline telephone number OR through web site of Bengaluru Municipal Corporation by use of internet. All complaints are collected in Complaint Management System of Bengaluru Municipal Corporation and solved in time-bound manner and replied to citizens accordingly.
+</p>
+</div><br>
+
+<button class="accordion">What are the charges for the various services provided by the Bengaluru Municipal Corporation?</button>
+<div class="panel"><br>
+  <p>Latest information regarding prevailing service charges is updated on the web site of Bengaluru Municipal Corporation.</p>
+</div><br>
+
+<button class="accordion">When to submit the service request?</button>
+<div class="panel"><br>
+  <p>During the Public Service Hours.</p>
+</div><br>
+
+<button class="accordion">Components of Property tax are as under [Section-129]</button>
+<div class="panel"><br>
+  <p>General Tax, Water Tax, Water Charge, Conservancy Tax and Betterment charges.</p>
+</div><br>
+
+<button class="accordion">Where should I pay the Property Tax?</button>
+<div class="panel"><br>
+  <p>Returns along with Challans could be generated in any of the BMC Help Centers, Citizen Civic Centers or online at the BMC Website. But payment has to be invariably made in cash / Cheque / DD / Pay – Order drawn in favour of Bengaluru Municipal Corporation.</p>
+</div><br>
+
+<button class="accordion">Can I file a revised return?</button>
+<div class="panel"><br>
+  <p>Yes, a revised return can be filed if you want to make any change in the Return Form applicable to you, by superscribing on it as “Revised Return”. You can pay the difference of tax along with the revised return.</p>
+</div><br>
+
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+</div>
+</span>
+</nav>
+<footer class="footer bg-dark" >
+    <div class="container">
+        <span class="text-muted">&copy; Rohan Chaudhari, Ritik Kumar, Rohan Sahu, Pranav Pahwa, Parth Krishna, Rahul Sharma, Raghav Goel</span>
+    </div>
+    </footer>
+
+</body>
+</html>

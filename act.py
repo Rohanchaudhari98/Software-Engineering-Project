@@ -480,7 +480,7 @@ def login():
 		connectionState=sqlite3.connect('databs.db')
 		cursor=connectionState.cursor()
 		user_data['password'] = (hashlib.sha1(user_data['password'].encode())).hexdigest()
-		if checkNamePwd(user_datalogin['username'],user_datalogin['password']):
+		if checkUserPwd(user_datalogin['username'],user_datalogin['password']):
 			return jsonify({"WRONG CREDENTIALS"}),400
 		else:
 			return jsonify({}),200

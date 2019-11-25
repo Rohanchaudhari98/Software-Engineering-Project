@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/formstyle.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/formstyle.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="static/images/icon.png">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/formstyle.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <!-- <meta charset="UTF-8"> -->
+    <title>BA - Payments</title>
+
+    <style>.footer {
+        position: fixed;
+        margin-top: 10px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 10px;
+        color: white;
+        text-align: center;
+    }
+    </style>
+    <style>
+    @media screen and (min-width : 0px) and (max-width :759px)
+    {
+        #content{
+            width: 100%; min-height: 95vh; margin: auto; background-color: white; padding: 20px;
+        }
+    }
+
+    @media screen and (min-width: 760px){
+        #content{
+            width: 750px; min-height: 95vh; margin: auto; background-color: white; padding: 20px;
+        }
+    }
+
+    #payments {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        width: 100%;
+        margin: auto;
+    }
+
+    #payments td {
+        border: 2px solid white;
+        padding: 8px;
+        text-align: center;
+    }
+
+    #payments tr:nth-child(even){background-color: #f2f2f2;}
+
+    #payments tr:hover {background-color: #ddd;}
+
+    #payments th {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        text-align: center;
+        background-color: #4c6791;
+        color: white;
+        border: 2px solid white;
+    }
+</style>
+
+</head>
+<body style="background-color:#eee">
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <span class="navbar-brand">
+            <a href="/login" color="white"><img src="/static/images/logo.png" width="40" height="30" class="d-inline-block align-top" alt="logo">
+            <font color="white">Bangalore Administrator</font></span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">Profile </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/createrequestbutton">Create Request </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/showrequests">Show Requests </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/createcomplaintbutton">Create Complaint </a>
+            </li>
+           
+            <li class="nav-item">
+                <a class="nav-link" href="/showcomplaint">Show Complaints</a>
+            </li>
+        
+            <li class="nav-item ">
+                <a class="nav-link" target="_blank" style="color: #ffffff !important;" href="/paymentsbutton">Payments </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/adminprofile">Administrator </a>
+            </li>
+            
+             <li class="nav-item ">
+                <a class="nav-link" href="/faq">FAQ </a>
+            </li>
+             <li class="nav-item ">
+                <a class="nav-link" href="/user">View Citizens </a>
+            </li>
+            
+        </ul>
+
+
+
+        <div class="btn-group">
+            {% for item in surname %}
+            <button type="button" class="btn btn-light">{{item[0]}} {{item[1]}}
+               </button> {% endfor %}
+            <button type="button" class="btn  btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only"> Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu  dropdown-menu-right">
+                <a class="dropdown-item" href="/editprofilebutton">Edit Profile</a>
+                <a class="dropdown-item" href="/logout">Log Out</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <div id="content">
+    <center><h3>Payments</h3></center>
+<table id='payments'>
+                    <tr>
+                        <th>Payment Description</th>
+                        <th>Amount</th>
+                        <th>Penalty</th>
+                        <th>Confirmation Date</th>
+                    </tr>
+                    <tr class='table-success'>
+                    	<td>Administration Fee for Complaint</td>
+                    	<td>500</td>
+                    	<td> - </td>
+                    	<td> 2019-12-10 13:29:36 </td>
+                    </tr>
+                    <tr class='table-danger'>
+                    	<td>Housing for Low income groups  </td> 
+                    	<td>500</td>
+                    	<td> 1500 </td>
+                    	<td> 2020-01-15 21:35:40 </td>
+                    </tr>
+                    <tr class='table-success'>
+                    	<td>Administration Fee for Request </td> 
+                    	<td>300</td>
+                    	<td> - </td>
+                    	<td> 2019-11-30 15:35:40 </td>
+                    </tr>
+                    <tr class='table-danger'>
+                    	<td>Organising public receptions with the municipality</td> 
+                    	<td>800</td>
+                    	<td> 5000 </td>
+                    	<td> 2019-11-28 18:45:12 </td>
+                    </tr>
+                    <tr class='table-success'>
+                    	<td>Construction and maintenance of public streets</td> 
+                    	<td>600</td>
+                    	<td> - </td>
+                    	<td> 2019-12-01 11:55:43 </td>
+                    </tr>
+                    <tr class='table-danger'>
+                    	<td>Construction of public parks and rescue homes for women</td> 
+                    	<td>450</td>
+                    	<td> 1200 </td>
+                    	<td> 2020-02-14 10:23:35 </td>
+                    </tr>
+                    <tr class='table-success'>
+                    	<td>Naming streets and numbering houses</td> 
+                    	<td>250</td>
+                    	<td> - </td>
+                    	<td> 2019-12-22 23:32:22 </td>
+                    </tr>
+                    <tr class='table-danger'>
+                    	<td>Planting and maintenance of roadside and other trees</td> 
+                    	<td>550</td>
+                    	<td> 1350 </td>
+                    	<td> 2020-01-28 17:25:42 </td>
+                    </tr>
+                    <tr class='table-success'>
+                    	<td>Registration of births and deaths</td> 
+                    	<td>100</td>
+                    	<td> - </td>
+                    	<td> 2019-11-28 12:35:40 </td>
+                    </tr>
+                    <tr class='table-danger'>
+                    	<td>Provision of transport facilities with the municipality</td> 
+                    	<td>1000</td>
+                    	<td> 3000 </td>
+                    	<td> 2019-12-02 18:25:40 </td>
+                    </tr>
+                    <tr class='table-success'>
+                    	<td>Maintenance or support of public hospitals</td> 
+                    	<td>700</td>
+                    	<td> - </td>
+                    	<td> 2019-11-28 13:23:32 </td>
+                    </tr>
+                    <tr class='table-danger'>
+                    	<td>Promotion of welfare of municipal employees</td> 
+                    	<td>200</td>
+                    	<td> 300 </td>
+                    	<td> 2019-12-22 12:22:56 </td>
+                    </tr>
+    </table>
+
+        
+    </div>
+    <footer class="footer bg-dark" >
+    <div class="container">
+        <span class="text-muted">&copy; Rohan Chaudhari, Ritik Kumar, Rohan Sahu, Pranav Pahwa, Parth Krishna, Rahul Sharma, Raghav Goel</span>
+    </div>
+    </footer>
+    </body>
+    
+</html>
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="import" href="footer.html">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/formstyle.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BA - Login</title>
+    <link rel="icon" href="static/images/icon.png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="formstyle.css" rel="stylesheet">
+
+</head>
+<body style="background-color: lightblue;">
+<nav align-items="right" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- <right><img src="static/images/india.png" width="30" height="20"></right> -->
+    <a class="navbar-brand" href="/login">
+        <img src="/static/images/logo.png" width="40" height="30" class="d-inline-block align-top" alt="logo">
+        Bangalore Administrator</a>
+<img style="position:relative;left:1260px;" src="static/images/india.png" width="30" height="20">
+</nav>
+<!-- <right><img src="static/images/india.png" width="30" height="20"></right> -->
+
+
+<div class="wrapper">
+    <form class="form-signin" method="post" action="/login">
+        <h2 class="form-signin-heading">Please login</h2>
+        <marquee width="100%" direction="right" height="50px">
+                Login to make complaints and requests
+                </marquee>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Account Type</label>
+            </div>
+            <select class="custom-select" name="accounttype" id="inputGroupSelect01">
+                <option value="Citizen" selected>Citizen</option>
+                <option value="Administrator">Administrator</option>
+            </select>
+        </div>
+        <input type="text" class="form-control" name="email" placeholder="Email" autofocus="" />
+        <input type="password" class="form-control" name="password" placeholder="Password" />
+        <span class="error"> </span>
+        <center><div style="color:red;">{{error}}</div></center>
+        <br>
+        <button class="btn btn-lg btn-secondary btn-block" type="submit" name="login">Login</button>
+    </form>
+    <form class="form-login" methods="get" action="/signup">
+        <br>
+        <center><a href="/signup" style="color:black;">Don't have an account?</a></center><br>
+        <button class="btn btn-lg btn-dark btn-block" type="submit" name="signup">Create Account</button>
+    </form>
+</div>
+
+</body>
+</html>
